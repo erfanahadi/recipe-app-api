@@ -31,8 +31,8 @@ jobs:
 
       # Run Django tests
       - name: Run tests
-        run: docker-compose run --rm app sh -c "python manage.py test"
+        run: docker compose run --rm app sh -c "python manage.py test"
 
       # Run flake8 linting
       - name: Lint code
-        run: docker-compose run --rm app sh -c "flake8"
+        run: docker compose run --rm app sh -c "flake8"
