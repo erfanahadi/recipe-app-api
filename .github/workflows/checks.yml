@@ -25,7 +25,7 @@ jobs:
 
       # Set up Docker Compose
       - name: Set up Docker Compose
-        uses: docker/setup-compose-action@v2
+        uses: docker/setup-compose-action@v1
         with:
           version: 'v2.23.1'  # specify version you want
 
