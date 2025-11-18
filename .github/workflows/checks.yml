@@ -1,21 +1,38 @@
----
 name: Checks
 
-on: [push]
-#hi there
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   test-lint:
-    name: Test and lint
+    name: Test and Lint
     runs-on: ubuntu-latest
+
     steps:
+      # Checkout your code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Log in to Docker Hub
       - name: Login to Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: test
+
+      # Set up Docker Compose
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v2
+        with:
+          version: 'v2.23.1'  # specify version you want
+
+      # Run Django tests
+      - name: Run tests
         run: docker-compose run --rm app sh -c "python manage.py test"
-      - name: lint
+
+      # Run flake8 linting
+      - name: Lint code
         run: docker-compose run --rm app sh -c "flake8"
