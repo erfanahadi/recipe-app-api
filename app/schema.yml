@@ -1,0 +1,743 @@
+openapi: 3.0.3
+info:
+  title: Recipe API
+  version: 1.0.0
+paths:
+  /api/recipe/ingredients/:
+    get:
+      operationId: recipe_ingredients_list
+      description: View for managing ingredient APIs
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+          description: ''
+    post:
+      operationId: recipe_ingredients_create
+      description: View for managing ingredient APIs
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+          description: ''
+  /api/recipe/ingredients/{id}/:
+    put:
+      operationId: recipe_ingredients_update
+      description: View for managing ingredient APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ingredient.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ingredient'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+          description: ''
+    patch:
+      operationId: recipe_ingredients_partial_update
+      description: View for managing ingredient APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ingredient.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedIngredient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedIngredient'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedIngredient'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+          description: ''
+    delete:
+      operationId: recipe_ingredients_destroy
+      description: View for managing ingredient APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this ingredient.
+        required: true
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/recipe/recipes/:
+    get:
+      operationId: recipe_recipes_list
+      description: View for managing recipe APIs
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+          description: ''
+    post:
+      operationId: recipe_recipes_create
+      description: View for managing recipe APIs
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetail'
+          description: ''
+  /api/recipe/recipes/{id}/:
+    get:
+      operationId: recipe_recipes_retrieve
+      description: View for managing recipe APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetail'
+          description: ''
+    put:
+      operationId: recipe_recipes_update
+      description: View for managing recipe APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RecipeDetail'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetail'
+          description: ''
+    patch:
+      operationId: recipe_recipes_partial_update
+      description: View for managing recipe APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipeDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipeDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRecipeDetail'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetail'
+          description: ''
+    delete:
+      operationId: recipe_recipes_destroy
+      description: View for managing recipe APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this recipe.
+        required: true
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/recipe/tags/:
+    get:
+      operationId: recipe_tags_list
+      description: View for managing tag APIs
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tag'
+          description: ''
+    post:
+      operationId: recipe_tags_create
+      description: View for managing tag APIs
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+  /api/recipe/tags/{id}/:
+    put:
+      operationId: recipe_tags_update
+      description: View for managing tag APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tag.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+    patch:
+      operationId: recipe_tags_partial_update
+      description: View for managing tag APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tag.
+        required: true
+      tags:
+      - recipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTag'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+    delete:
+      operationId: recipe_tags_destroy
+      description: View for managing tag APIs
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this tag.
+        required: true
+      tags:
+      - recipe
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/user/create/:
+    post:
+      operationId: user_create_create
+      description: Create a new user in the system
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/me/:
+    get:
+      operationId: user_me_retrieve
+      description: Manage the authenticated user
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: user_me_update
+      description: Manage the authenticated user
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: user_me_partial_update
+      description: Manage the authenticated user
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/user/token/:
+    post:
+      operationId: user_token_create
+      description: Create a new auth token for user
+      tags:
+      - user
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+components:
+  schemas:
+    AuthToken:
+      type: object
+      description: Serializer for the user authentication object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+    Ingredient:
+      type: object
+      description: Serializer for the ingredient object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+      required:
+      - id
+      - name
+    PatchedIngredient:
+      type: object
+      description: Serializer for the ingredient object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+    PatchedRecipeDetail:
+      type: object
+      description: Serializer for the recipe detail object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        time_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        link:
+          type: string
+          maxLength: 255
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+        description:
+          type: string
+    PatchedTag:
+      type: object
+      description: Serializer for the tag object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        user:
+          type: integer
+          readOnly: true
+    PatchedUser:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+          minLength: 5
+        name:
+          type: string
+          maxLength: 255
+    Recipe:
+      type: object
+      description: Serializer for the recipe object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        time_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        link:
+          type: string
+          maxLength: 255
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+      required:
+      - id
+      - price
+      - time_minutes
+      - title
+    RecipeDetail:
+      type: object
+      description: Serializer for the recipe detail object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        time_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+        link:
+          type: string
+          maxLength: 255
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        ingredients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ingredient'
+        description:
+          type: string
+      required:
+      - id
+      - price
+      - time_minutes
+      - title
+    Tag:
+      type: object
+      description: Serializer for the tag object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 255
+        user:
+          type: integer
+          readOnly: true
+      required:
+      - id
+      - name
+      - user
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+          minLength: 5
+        name:
+          type: string
+          maxLength: 255
+      required:
+      - email
+      - name
+      - password
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
